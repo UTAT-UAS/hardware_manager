@@ -1,0 +1,13 @@
+[Unit]
+Description=MicroXRCE Agent
+BindsTo=dev-serial-by\x2did-usb\x2dSilicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001\x2dif00\x2dport0.device
+After=network.target dev-serial-by\x2did-usb\x2dSilicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001\x2dif00\x2dport0.device
+
+[Service]
+Type=simple
+User=uas
+ExecStart=/bin/bash -c "source /home/uas/.bashrc && source /home/uas/uas_ws/install/local_setup.bash && MicroXRCEAgent serial -D /dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0 -b 921600"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

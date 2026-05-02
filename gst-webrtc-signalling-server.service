@@ -1,0 +1,12 @@
+[Unit]
+Description=GStreamer WebRTC Signalling Server
+After=network.target
+
+[Service]
+Type=simple
+User=uas
+ExecStart=/bin/bash -c "source /home/uas/.bashrc && gst-webrtc-signalling-server --port 8443"
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
