@@ -1,2 +1,2 @@
 # Trigger microxrce.service when the Silicon Labs CP2102 gets plugged in
-SUBSYSTEM=="tty", ENV{ID_SERIAL}=="Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001", TAG+="systemd", ENV{SYSTEMD_WANTS}+="microxrce.service"
+SUBSYSTEM=="tty", ENV{ID_SERIAL}=="Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001", MODE="0666", TAG+="systemd", ENV{SYSTEMD_WANTS}+="microxrce.service"
