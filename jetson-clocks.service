@@ -1,0 +1,14 @@
+[Unit]
+Description=run jetson_clocks 30s after boot
+After=multi-user.target
+
+[Service]
+Type=oneshot
+User=root
+# Wait for 30 seconds before running the main command (required for some reason)
+ExecStartPre=/bin/sleep 30
+ExecStart=/usr/bin/jetson_clocks
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
