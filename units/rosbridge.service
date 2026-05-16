@@ -7,6 +7,7 @@ Type=simple
 User=uas
 ExecStart=/bin/bash -c "source /opt/ros/humble/setup.bash && source /home/uas/uas_ws/install/setup.bash && exec ros2 run rosbridge_server rosbridge_websocket --port 8080"
 Restart=on-failure
+KillSignal=SIGINT
 
 [Install]
 WantedBy=multi-user.target
