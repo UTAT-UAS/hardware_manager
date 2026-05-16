@@ -1,12 +1,14 @@
 # hardware_manager
 
-Contains systemd services and udev rules for managing hardware and background services.
+Contains systemd services and udev rules for autostarting offboard computer background services.
 
 ## Installation and Updating
 
 ### 1. Systemd Services
 
 To install or update the systemd services (`gst-webrtc-signalling-server.service`, `rosbridge.service`, and `microxrce.service`), copy them to the system systemd directory.
+
+**NOTE:** These services only work if you've configured your system the same.
 
 1. **Copy the units:**
    ```bash

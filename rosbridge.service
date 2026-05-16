@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=uas
-ExecStart=/bin/bash -c "source /home/uas/.bashrc && source /home/uas/uas_ws/install/local_setup.bash && ros2 run rosbridge_server rosbridge_websocket --port 8080"
+ExecStart=/bin/bash -c "source /home/uas/.bashrc && source /home/uas/uas_ws/install/local_setup.bash && exec ros2 run rosbridge_server rosbridge_websocket --port 8080"
 Restart=on-failure
 
 [Install]
