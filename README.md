@@ -4,38 +4,44 @@ Contains systemd services and udev rules for autostarting offboard computer back
 
 ## Installation and Updating
 
-### 1. Systemd Services
+**NOTE:** These configurations assume your system is set up with the required dependencies.
 
-To install or update the systemd services (`gst-webrtc-signalling-server.service`, `rosbridge.service`, and `microxrce.service`), copy them to the system systemd directory.
+```bash
+sudo ./install.sh
+```
 
-**NOTE:** These services only work if you've configured your system the same.
+Any `.service` files placed in the `units/` directory and `.rules` files in the `udev/` directory will be automatically discovered, installed, and started (or reloaded).
 
-1. **Copy the units:**
+## Manual Installation
+
+### Systemd Services
+
+To manually install or update a generic systemd service:
+
+1. **Copy the unit:**
    ```bash
-   cd ~/workspace/hardware_manager
-   sudo cp *.service /etc/systemd/system/
+   sudo cp units/<your_service>.service /etc/systemd/system/
    ```
 2. **Reload the systemd daemon:**
    ```bash
    sudo systemctl daemon-reload
    ```
-3. **Enable the services to start at boot (optional):**
+3. **Enable the service to start at boot:**
    ```bash
-   sudo systemctl enable gst-webrtc-signalling-server.service rosbridge.service microxrce.service
+   sudo systemctl enable <your_service>.service
    ```
-4. **Start or restart the services:**
+4. **Start or restart the service:**
    ```bash
-   sudo systemctl restart gst-webrtc-signalling-server.service rosbridge.service microxrce.service
+   sudo systemctl restart <your_service>.service
    ```
 
-### 2. Udev Rules
+### Udev Rules
 
-The udev rule ensures that `microxrce.service` automatically starts when the proper USB tracker device is plugged in.
+To manually install or update a set of udev rules:
 
 1. **Copy the rules file:**
    ```bash
-   cd ~/workspace/hardware_manager
-   sudo cp 99-uas-usb.rules /etc/udev/rules.d/
+   sudo cp udev/<your_rules>.rules /etc/udev/rules.d/
    ```
 2. **Reload the udev rules and trigger them:**
    ```bash
